@@ -1,39 +1,27 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
+
+void solve()
+{
+    int n, x;
+    cin >> n >> x;
+    if (n <= 2)
+    {
+        cout << 1 << endl;
+    }
+    else
+    {
+        cout << (n - 3) / x + 2 << endl;
+    }
+}
+
 int main()
 {
     int t;
     cin >> t;
     while (t--)
     {
-        int n;
-        cin >> n;
-        vector<int> arr(n);
-        for (int i = 0; i < n; i++)
-        {
-            cin >> arr[i];
-        }
-        vector<int> ans(n);
-        int i = 0, j = n - 1, index = 0;
-        while (i <= j)
-        {
-            if (index % 2 == 0)
-            {
-                ans[index] = arr[i];
-                i++;
-            }
-            else
-            {
-                ans[index] = arr[j];
-                j--;
-            }
-            index++;
-        }
-        for (auto it : ans)
-        {
-            cout << it << " ";
-        }
-        cout << endl;
+        solve();
     }
     return 0;
 }
