@@ -1,18 +1,22 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
+
 int main()
 {
     int n;
     cin >> n;
-    int cubes = n;
-    int used = 0, level = 1;
-    while (used <= cubes)
+
+    int height = 0;
+    int blocks = 0;
+    int level = 1;
+
+    while (blocks + (level * (level + 1)) / 2 <= n)
     {
-        used += level;
-        n -= used;
-        if (n >= 1 and n >= (used + level + 1))
-            level++;
+        blocks += (level * (level + 1)) / 2;
+        height++;
+        level++;
     }
-    cout << level << endl;
+
+    cout << height << endl;
     return 0;
 }
