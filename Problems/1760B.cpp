@@ -1,5 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <algorithm>
+
 using namespace std;
+
 int main()
 {
     int t;
@@ -9,11 +13,18 @@ int main()
         int n;
         string s;
         cin >> n >> s;
-        char ans = '0';
-        for (int i = 0; i < n; i++)
+
+        char max_char = 'a';
+        for (char c : s)
         {
-            ans = max(ans, s[i]);
+            if (c > max_char)
+            {
+                max_char = c;
+            }
         }
-        cout << ans << endl;
+
+        int alphabet_size = max_char - 'a' + 1;
+        cout << alphabet_size << endl;
     }
+    return 0;
 }
