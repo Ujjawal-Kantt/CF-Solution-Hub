@@ -1,51 +1,28 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <set>
 using namespace std;
-
-char findMissingLetter(vector<string> &square)
-{
-    vector<char> letters = {'A', 'B', 'C'};
-    for (char letter : letters)
-    {
-        bool found = false;
-        for (int i = 0; i < 3; ++i)
-        {
-            if (square[i].find(letter) == string::npos)
-            {
-                found = true;
-                break;
-            }
-        }
-        if (!found)
-        {
-            return letter;
-        }
-    }
-    return '?';
-}
 
 int main()
 {
     int t;
-    cin >> t;
-    while (t--)
+    cin >> t;     // Number of test cases
+    cin.ignore(); // To handle the newline after the number of test cases
+
+    for (int i = 0; i < t * 3; ++i)
     {
-        vector<string> square(3);
-        for (int i = 0; i < 3; ++i)
+        string row;
+        getline(cin, row);
+
+        // Check for the missing character in the current row
+        for (char c : {'A', 'B', 'C'})
         {
-            cin >> square[i];
-        }
-        char missingLetter = findMissingLetter(square);
-        for (int i = 0; i < 3; ++i)
-        {
-            for (int j = 0; j < 3; ++j)
+            if (row.find(c) == string::npos)
             {
-                if (square[i][j] == '?')
-                {
-                    square[i][j] = missingLetter;
-                }
+                cout << c << endl;
             }
         }
-        cout << missingLetter << endl;
     }
+
     return 0;
 }
