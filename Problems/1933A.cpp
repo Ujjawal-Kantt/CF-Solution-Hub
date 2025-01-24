@@ -1,43 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int maxSumAfterOperations(vector<int> &a)
+void solve()
 {
-    int n = a.size();
-    int totalSum = 0;
-    for (int i = 0; i < n; ++i)
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
     {
-        totalSum += a[i];
+        cin >> a[i];
     }
-
-    int maxSum = totalSum;
-    for (int l = 0; l < n; ++l)
+    int initial_sum = accumulate(a.begin(), a.end(), 0);
+    int max_negate_sum = 0;
+    for (int i = 0; i < n; i++)
     {
-        int currentSum = totalSum;
-        for (int r = l; r < n; ++r)
+        int current_sum = 0;
+        for (int j = i; j < n; j++)
         {
-            currentSum -= 2 * a[r];
-            maxSum = max(maxSum, currentSum);
+            current_sum += a[j];
+            max_negate_sum = max(max_negate_sum, -2 * current_sum);
         }
     }
-
-    return maxSum;
+    int max_sum = initial_sum + max_negate_sum;
+    cout << max_sum << "\n";
 }
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int t;
     cin >> t;
     while (t--)
     {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; ++i)
-        {
-            cin >> a[i];
-        }
-        cout << maxSumAfterOperations(a) << endl;
+        solve();
     }
     return 0;
 }
