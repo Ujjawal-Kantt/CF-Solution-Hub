@@ -1,26 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
-string solve(string s)
+
+bool isMeowing(const string &s)
 {
-    unordered_map<char, int> mpp;
-    for (auto c : s)
+    string t;
+    for (char c : s)
     {
-        mpp[c]++;
+        t += tolower(c);
     }
-    if (mpp.size() > 4)
-        return "NO";
-    vector<int> freq(4);
-    for (int i = 0; i < s.size(); i++)
-    {
-        if (s[i] == 'M' or s[i] == 'm')
-        {
-            freq[0]++;
-            if (freq[0] > mpp[''])
-        }
-    }
+    int n = t.size();
+    int idx = 0;
+    if (idx >= n || t[idx] != 'm')
+        return false;
+    while (idx < n && t[idx] == 'm')
+        idx++;
+    if (idx >= n || t[idx] != 'e')
+        return false;
+    while (idx < n && t[idx] == 'e')
+        idx++;
+    if (idx >= n || t[idx] != 'o')
+        return false;
+    while (idx < n && t[idx] == 'o')
+        idx++;
+    if (idx >= n || t[idx] != 'w')
+        return false;
+    while (idx < n && t[idx] == 'w')
+        idx++;
+    return idx == n;
 }
+
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int t;
     cin >> t;
     while (t--)
@@ -29,8 +42,16 @@ int main()
         cin >> n;
         string s;
         cin >> s;
-        string ans = solve(s);
-        cout << ans << endl;
+
+        if (isMeowing(s))
+        {
+            cout << "YES\n";
+        }
+        else
+        {
+            cout << "NO\n";
+        }
     }
+
     return 0;
 }
