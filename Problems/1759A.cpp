@@ -5,8 +5,9 @@ int main()
 {
     int t;
     cin >> t;
-    string general = "";
-    while (general.size() < 50)
+    string general = "Yes";
+    general = "";
+    for (int i = 0; i < 30; ++i)
     {
         general += "Yes";
     }
@@ -15,14 +16,8 @@ int main()
     {
         string input;
         cin >> input;
-        if (general.find(input) != string::npos)
-        {
-            cout << "YES\n";
-        }
-        else
-        {
-            cout << "NO\n";
-        }
+        cout << (general.find(input) != string::npos ? "YES" : "NO") << endl;
     }
+
     return 0;
 }
