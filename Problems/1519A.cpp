@@ -1,6 +1,16 @@
 #include <iostream>
-#include <algorithm>
 using namespace std;
+
+void solve()
+{
+    long long r, b, d;
+    cin >> r >> b >> d;
+
+    if (r > b)
+        swap(r, b);
+
+    cout << (b <= r * (d + 1) ? "YES\n" : "NO\n");
+}
 
 int main()
 {
@@ -8,18 +18,7 @@ int main()
     cin >> t;
     while (t--)
     {
-        int r, b, d;
-        cin >> r >> b >> d;
-        if (r > b)
-            swap(r, b);
-        if (b <= r * (d + 1))
-        {
-            cout << "YES" << endl;
-        }
-        else
-        {
-            cout << "NO" << endl;
-        }
+        solve();
     }
     return 0;
 }
